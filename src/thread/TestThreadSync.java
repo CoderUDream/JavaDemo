@@ -218,13 +218,22 @@ public class TestThreadSync {
     }
 
     //测试synchronzied用于方法中的代码块
+    // 出现结果：一些执行快的get线程 获取到空数据，然后chunkPut 放入数据， 剩下的get线程立马获取到数据
     public void testChunkSync() {
+        DataOperation dataOpt1 = new DataOperation();
+        Thread a = new Thread(new SynchronziedChunkPutThread(dataOpt1));
+        //a.setPriority(Thread.MAX_PRIORITY);
+        a.start();
 
+        for(int i = 1; i <= 10; i++) {
+            new Thread(new SynchronziedChunkGetThread(dataOpt1)).start();
+        }
     }
 
     public static void testThreadSync() {
         TestThreadSync t = new TestThreadSync();
         //t.testStaticSync();
-        t.testCommFunctionSync();
+        //t.testCommFunctionSync();
+        t.testChunkSync();
     }
 }
