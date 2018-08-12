@@ -7,6 +7,7 @@ import thread.TestVolatile;
 
 import reflection.TestReflect;
 
+import annotation.TestAnnotation;
 
 public class TestMain {
 
@@ -32,7 +33,11 @@ public class TestMain {
 
     public void testReflect() { TestReflect.testReflect(); }
 
+    public void testAnnotation() throws Exception { TestAnnotation.testAnnotation(); }
+
     public static void main(String[] args) {
+        try {
+
        TestMain t = new TestMain();
        //BaseCollections.TestCollections();
        //t.testIO();
@@ -43,6 +48,13 @@ public class TestMain {
         //t.testThreadAtom();
         //t.testThreadVolatile();
 
-        t.testReflect();
+        //t.testReflect();
+
+        t.testAnnotation();
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
     }
 }

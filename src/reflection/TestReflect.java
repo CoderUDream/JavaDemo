@@ -10,6 +10,7 @@ import java.util.Properties;
 /**
  * Created by liyujiang on 2018/8/11.
  */
+
 public class TestReflect {
 
     //获取class信息
@@ -43,11 +44,11 @@ public class TestReflect {
         //获取所有构造方法
         System.out.println("****************获取所有构造方法***************");
         Constructor[] constructors1 = stuClazz.getDeclaredConstructors();
-        for(Constructor c1 : constructors1) {
+        for (Constructor c1 : constructors1) {
             System.out.println(c1.toString());
 
             //调用 私有构造函数
-            if(!c1.isAccessible()) {  //这里为什么 public的构造函数也是为false
+            if (!c1.isAccessible()) {  //这里为什么 public的构造函数也是为false
                 c1.setAccessible(true);
                 //c1.newInstance("1", "2");
             }
@@ -57,7 +58,7 @@ public class TestReflect {
         //获取所有"public"构造方法
         System.out.println("****************获取所有\"public\"构造方法***************");
         constructors1 = stuClazz.getConstructors();
-        for(Constructor c1 : constructors1) {
+        for (Constructor c1 : constructors1) {
             System.out.println(c1.toString());
         }
 
@@ -78,7 +79,7 @@ public class TestReflect {
     //获取成员定义变量
     public void getClassMembers() {
         Class stuClazz;
-        try{
+        try {
             stuClazz = Class.forName("reflection.StudentC");
 
             System.out.println("****************名字为\"number1\"的  public 成员变量***************");
@@ -87,7 +88,7 @@ public class TestReflect {
 
             System.out.println("****************所有的 public 成员变量***************");
             Field[] fields1 = stuClazz.getFields();
-            for (Field field: fields1) {
+            for (Field field : fields1) {
                 System.out.println(field.toString());
             }
 
@@ -97,7 +98,7 @@ public class TestReflect {
 
             System.out.println("****************所有的成员变量***************");
             Field[] fields2 = stuClazz.getDeclaredFields();
-            for (Field field: fields2) {
+            for (Field field : fields2) {
                 System.out.println(field.toString());
             }
 
@@ -105,7 +106,7 @@ public class TestReflect {
             Object obj = stuClazz.getConstructor().newInstance(null);
             field2.set(obj, "hello is me");
 
-            StudentC stu = (StudentC)obj;
+            StudentC stu = (StudentC) obj;
             System.out.println("stu.str1 is: " + stu.str1);
 
         } catch (Exception e) {
