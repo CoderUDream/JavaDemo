@@ -1,4 +1,4 @@
-package concurrent;
+package main.java.concurrent;
 
 import java.util.concurrent.ConcurrentHashMap;
 

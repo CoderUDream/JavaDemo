@@ -1,11 +1,8 @@
-package reflection;
+package main.java.reflection;
 
-import java.io.FileReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
-import java.util.Properties;
 
 /**
  * Created by liyujiang on 2018/8/11.
@@ -27,7 +24,7 @@ public class TestReflect {
 
         //3.使用Class.forName 这个最常用
         try {
-            Class stuClazz3 = Class.forName("reflection.StudentA");
+            Class stuClazz3 = Class.forName("main.java.reflection.StudentA");
             System.out.println(stuClazz3.getName());
         } catch (ClassNotFoundException e) {
             System.out.println(e.toString());
@@ -37,7 +34,7 @@ public class TestReflect {
     //获取构造函数
     public void getClassConstructors() throws Exception {
 
-        Class stuClazz = Class.forName("reflection.StudentB");
+        Class stuClazz = Class.forName("main.java.reflection.StudentB");
         Constructor c;
         Object obj;
 
@@ -64,7 +61,7 @@ public class TestReflect {
 
         //参数为1个int类型的 构造方法
         System.out.println("****************public 无参数类型的 构造方法***************");
-        c = stuClazz.getConstructor(null);
+        c = stuClazz.getConstructor();
         System.out.println(c.toString());
         c.newInstance(); //初始化1个StudentB对象
 
@@ -80,7 +77,7 @@ public class TestReflect {
     public void getClassMembers() {
         Class stuClazz;
         try {
-            stuClazz = Class.forName("reflection.StudentC");
+            stuClazz = Class.forName("main.java.reflection.StudentC");
 
             System.out.println("****************名字为\"number1\"的  public 成员变量***************");
             Field field1 = stuClazz.getField("number1");
@@ -103,7 +100,7 @@ public class TestReflect {
             }
 
             System.out.println("****************给str1并且赋值***************");
-            Object obj = stuClazz.getConstructor().newInstance(null);
+            Object obj = stuClazz.getConstructor().newInstance();
             field2.set(obj, "hello is me");
 
             StudentC stu = (StudentC) obj;
@@ -118,7 +115,7 @@ public class TestReflect {
     public void getClassMethod() {
         Class stuClazz;
         try{
-            stuClazz = Class.forName("reflection.StudentD");
+            stuClazz = Class.forName("main.java.reflection.StudentD");
 
             System.out.println("****************获取 public 所有方法***************");
             Method[] methods1 = stuClazz.getMethods();
@@ -142,7 +139,7 @@ public class TestReflect {
 
             //使用
             System.out.println("****************使用***************");
-            Object obj = stuClazz.getConstructor(null).newInstance();
+            Object obj = stuClazz.getConstructor().newInstance();
             method1.invoke(obj, 1); //打印： public void show1() ~~~
 
             //必须将访问设置为true 这样才不会抛出异常
@@ -156,7 +153,7 @@ public class TestReflect {
 
     //
     public void reflectFromLocal() {
-        FileReader fr;
+        //FileReader fr;
         try {
             /*fr = new FileReader("resources/classreflect.config");
             Properties properties = new Properties();

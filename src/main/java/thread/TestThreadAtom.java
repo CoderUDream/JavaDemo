@@ -1,6 +1,5 @@
-package thread;
+package main.java.thread;
 
-import javax.annotation.Resource;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -19,7 +18,7 @@ class ThreadNoAtom implements Runnable {
             try {
                 ticket--;
                 Thread.sleep(10);
-                System.out.println("thread-" + Thread.currentThread().getName() + ", sell ticket:" + ticket);
+                System.out.println("main.java.thread-" + Thread.currentThread().getName() + ", sell ticket:" + ticket);
             } catch (InterruptedException e) {
                 System.out.println(e.toString());
             }
@@ -42,9 +41,9 @@ class ThreadAtom implements Runnable {
                     Thread.sleep(10);
                     //如果设置成功了，才打印
                     if (ticket.compareAndSet(count, count - 1)) {
-                        System.out.println("thread-" + Thread.currentThread().getName() + ", sell ticket:" + (count - 1));
+                        System.out.println("main.java.thread-" + Thread.currentThread().getName() + ", sell ticket:" + (count - 1));
                     } else {
-                        System.out.println("thread-" + Thread.currentThread().getName() + ", sell ticket failed");
+                        System.out.println("main.java.thread-" + Thread.currentThread().getName() + ", sell ticket failed");
                     }
                 } else {
                     break;

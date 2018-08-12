@@ -1,4 +1,4 @@
-package annotation;
+package main.java.annotation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -39,10 +39,10 @@ public class TestAnnotation {
     public static void testAnnotation() throws Exception {
 
         Class clazz;
-        clazz = Class.forName("annotation.PersonB");
+        clazz = Class.forName("main.java.annotation.PersonB");
 
         //获取所有注释
-        Annotation[] annotations = clazz.getAnnotations(); //获取所有的注解
+        Annotation[] annotations = clazz.getDeclaredAnnotations(); //获取所有的注解
         for (Annotation a : annotations) {
             if(a.annotationType() == NickName.class) { //获取到了NickName的注解
 
@@ -53,7 +53,7 @@ public class TestAnnotation {
             } else if(a.annotationType() == NickNames.class) {  //获取到了NickNames的注解
 
                 NickNames o = (NickNames)a;
-                NickName[] nicknames = o.value();
+                NickName[] nicknames = o.value(); // 为什么这里NickNames不能调用value
 
                 for(NickName name : nicknames) {
                     System.out.println("NickName value:" + name.value() + ", time is:" + name.time());

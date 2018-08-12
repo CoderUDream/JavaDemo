@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jiang</groupId>
+    <artifactId>JavaDemo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--引入spring支持-->
+    <properties>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!--源代码编码方式-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!--定义spring的版本-->
+        <org.springframework.version>4.0.2.RELEASE</org.springframework.version>
+    </properties>
+
+    <dependencies>
+        <!--core核心-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
+        <!--bean相关-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
+        <!--main.java.spring-context相关-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <!--编译的插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!--指定JDK版本-->
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.source}</target>
+
+                    <!--指定maven读取文件的编码  一般用全局的 这里可以省略不写-->
+                    <encoding>utf8</encoding>
+                </configuration>
+            </plugin>
+
+            <!--执行的插件-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>main.java.TestMain</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

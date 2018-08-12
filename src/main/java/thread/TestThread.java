@@ -1,4 +1,4 @@
-package thread;
+package main.java.thread;
 
 /**
  * Created by Administrator on 2018/8/10.
@@ -136,7 +136,7 @@ public class TestThread {
                 try {
                     for (int i = 1; i <= 5; i++) {
                         Thread.sleep(2000);
-                        System.out.println("thread running ~~ ");
+                        System.out.println("main.java.thread running ~~ ");
                     }
                 }
                 catch(InterruptedException e) {

@@ -1,9 +1,6 @@
-package thread;
+package main.java.thread;
 
-import java.util.HashMap;
 import java.util.Random;
-import java.util.function.Supplier;
-import java.lang.StringBuffer;
 
 /**
  * Created by Administrator on 2018/8/11.
@@ -30,11 +27,11 @@ class ThreadC implements Runnable {
     @Override
     public void run() {
         String name = localA.get();
-        System.out.println("thread-" + Thread.currentThread().getName() + " start...");
+        System.out.println("main.java.thread-" + Thread.currentThread().getName() + " start...");
         for(int i = 1; i <= 50; i++) {
             localA.set(localA.get() + new Random().nextInt(10));
         }
-        System.out.println("thread-" + Thread.currentThread().getName() + " localA is:" + localA.get());
+        System.out.println("main.java.thread-" + Thread.currentThread().getName() + " localA is:" + localA.get());
     }
 };
 

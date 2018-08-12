@@ -1,13 +1,15 @@
-import baseio.BaseIO;
-import thread.TestThread;
-import thread.TestThreadSync;
-import thread.TestThreadLocal;
-import thread.TestThreadAtom;
-import thread.TestVolatile;
+package main.java;
 
-import reflection.TestReflect;
+import main.java.baseio.BaseIO;
+import main.java.thread.TestThread;
+import main.java.thread.TestThreadSync;
+import main.java.thread.TestThreadLocal;
+import main.java.thread.TestThreadAtom;
+import main.java.thread.TestVolatile;
 
-import annotation.TestAnnotation;
+import main.java.reflection.TestReflect;
+
+import main.java.annotation.TestAnnotation;
 
 public class TestMain {
 
@@ -38,19 +40,19 @@ public class TestMain {
     public static void main(String[] args) {
         try {
 
-       TestMain t = new TestMain();
-       //BaseCollections.TestCollections();
-       //t.testIO();
+            TestMain t = new TestMain();
+            //BaseCollections.TestCollections();
+            //t.testIO();
 
-       //t.testThread();
-       //t.testSyncThread();
-       //t.testThreadLocal();
-        //t.testThreadAtom();
-        //t.testThreadVolatile();
+            //t.testThread();
+            //t.testSyncThread();
+            //t.testThreadLocal();
+            //t.testThreadAtom();
+            //t.testThreadVolatile();
 
-        //t.testReflect();
+            //t.testReflect();
 
-        t.testAnnotation();
+            t.testAnnotation();
 
         } catch (Exception e) {
             System.out.println(e.toString());

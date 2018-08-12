@@ -1,7 +1,6 @@
-package baseio;
+package main.java.baseio;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class BaseIO {
 
@@ -10,7 +9,7 @@ public class BaseIO {
         try
         {
             //按照字符读取
-            FileReader fr = new FileReader("resources/english.txt");
+            FileReader fr = new FileReader("main/java/resources/english.txt");
             BufferedReader br = new BufferedReader(fr);
             StringBuffer sb = new StringBuffer();
             String s;
@@ -29,7 +28,7 @@ public class BaseIO {
     //通过 fileInputStream 字节读取
     public static void fileInputStream() {
         try {
-            FileInputStream in = new FileInputStream("resources/chinease.txt");
+            FileInputStream in = new FileInputStream("main/java/resources/chinease.txt");
 
             StringBuffer sb = new StringBuffer();
             int length;
@@ -50,7 +49,7 @@ public class BaseIO {
     public static void fileOutputStream() {
         try
         {
-            FileOutputStream fout = new FileOutputStream(new File("resources/fileout.txt"));
+            FileOutputStream fout = new FileOutputStream(new File("main/java/resources/fileout.txt"));
             fout.write(new String("hello jiang 我很好").getBytes());
             fout.close();
         } catch (IOException e) {

@@ -1,4 +1,4 @@
-package thread;
+package main.java.thread;
 
 /**
  * Created by Administrator on 2018/8/11.
@@ -20,7 +20,7 @@ class ClassTestA {
                             System.out.println(e.toString());
                         }
 
-                        System.out.println("thread-" + Thread.currentThread().getName() + " number is: " + number);
+                        System.out.println("main.java.thread-" + Thread.currentThread().getName() + " number is: " + number);
                     }
                 }
             });
@@ -34,7 +34,7 @@ class ClassTestA {
                     try {
                         Thread.sleep(2000);
                         number++;
-                        System.out.println("thread-" + Thread.currentThread().getName() + " changed number!!!!!!!!! new number is:" + number);
+                        System.out.println("main.java.thread-" + Thread.currentThread().getName() + " changed number!!!!!!!!! new number is:" + number);
                     } catch (InterruptedException e) {
                         System.out.println(e.toString());
                     }
