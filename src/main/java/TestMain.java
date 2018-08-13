@@ -11,6 +11,8 @@ import main.java.reflection.TestReflect;
 
 import main.java.annotation.TestAnnotation;
 
+import main.java.spring.TestSpring;
+
 public class TestMain {
 
     public void testIO() {
@@ -37,6 +39,8 @@ public class TestMain {
 
     public void testAnnotation() throws Exception { TestAnnotation.testAnnotation(); }
 
+    public void testSpring() { TestSpring.testSpring(); }
+
     public static void main(String[] args) {
         try {
 
@@ -50,9 +54,11 @@ public class TestMain {
             //t.testThreadAtom();
             //t.testThreadVolatile();
 
-            //t.testReflect();
+            //t.testReflect();     //反射
 
-            t.testAnnotation();
+            //t.testAnnotation();  //注解
+
+            t.testSpring();
 
         } catch (Exception e) {
             System.out.println(e.toString());

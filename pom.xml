@@ -74,7 +74,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>main.java.TestMain</mainClass>
+                    <mainClass>test.TestMain</mainClass>
                 </configuration>
             </plugin>
         </plugins>
