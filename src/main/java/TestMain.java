@@ -1,6 +1,7 @@
 package main.java;
 
 import main.java.baseio.BaseIO;
+import main.java.spring.transaction.TestTransaction;
 import main.java.thread.TestThread;
 import main.java.thread.TestThreadSync;
 import main.java.thread.TestThreadLocal;
@@ -41,28 +42,27 @@ public class TestMain {
 
     public void testSpring() { TestSpring.testSpring(); }
 
+    public void testTransaction() { TestTransaction.testTransaction(); }
+
+
     public static void main(String[] args) {
-        try {
 
-            TestMain t = new TestMain();
-            //BaseCollections.TestCollections();
-            //t.testIO();
+        TestMain t = new TestMain();
+        //BaseCollections.TestCollections();
+        //t.testIO();
 
-            //t.testThread();
-            //t.testSyncThread();
-            //t.testThreadLocal();
-            //t.testThreadAtom();
-            //t.testThreadVolatile();
+        //t.testThread();
+        //t.testSyncThread();
+        //t.testThreadLocal();
+        //t.testThreadAtom();
+        //t.testThreadVolatile();
 
-            //t.testReflect();     //反射
+        //t.testReflect();     //反射
 
-            //t.testAnnotation();  //注解
+        //t.testAnnotation();  //注解
 
-            t.testSpring();
-
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+        //t.testSpring();   //spring 框架
+        t.testTransaction();
 
     }
 }

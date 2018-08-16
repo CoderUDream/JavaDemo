@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:utils="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="humanGroup" class="main.java.spring.HumanGroup" abstract="true">
+        <property name="organs" value="heart,brain,stomach"></property>
+        <property name="bloodColor" value="red"></property>
+    </bean>
+
+    <bean id="student_1" class="main.java.spring.Student" init-method="init" destroy-method="destroy">
+        <constructor-arg name="age" value="13"></constructor-arg>
+        <constructor-arg name="name" value="Jagger"></constructor-arg>
+
+        <property name="hobby" value="littleRain"></property>
+        <property name="scoresMap">
+            <utils:map id="holder" map-class="java.util.HashMap" key-type="java.lang.String"
+                       value-type="java.lang.String">
+                <entry key="english" value="20"/>
+                <entry key="math" value="50"/>
+            </utils:map>
+        </property>
+
+        <property name="dress">
+            <utils:list value-type="java.lang.String">
+                <value>glass</value>
+                <value>shoes</value>
+                <value>clothes</value>
+            </utils:list>
+        </property>
+    </bean>
+
+
+    <!--用于继承-->
+    <bean id="student_2" class="main.java.spring.Student" init-method="init" destroy-method="destroy"
+          parent="humanGroup">
+        <constructor-arg name="age" value="13"></constructor-arg>
+        <constructor-arg name="name" value="Jagger"></constructor-arg>
+
+        <property name="hobby" value="littleRain"></property>
+        <property name="scoresMap">
+            <utils:map id="holder" map-class="java.util.HashMap" key-type="java.lang.String"
+                       value-type="java.lang.String">
+                <entry key="english" value="20"/>
+                <entry key="math" value="50"/>
+            </utils:map>
+        </property>
+
+        <property name="dress">
+            <utils:list value-type="java.lang.String">
+                <value>glass</value>
+                <value>shoes</value>
+                <value>clothes</value>
+            </utils:list>
+        </property>
+    </bean>
+
+    <!--测试自动填充-->
+
+    <bean id="pen_1" class="main.java.spring.Pen">
+        <property name="color" value="black"/>
+        <property name="length" value="10"/>
+    </bean>
+
+    <!-- 自动填充默认为 autowire="byType" 在属性中ref 需要填充的id-->
+    <bean id="studentB_1" class="main.java.spring.StudentB">
+        <property name="pen" ref="pen_1"></property>
+    </bean>
+
+    <bean id="pen" class="main.java.spring.Pen">
+        <property name="color" value="red"/>
+        <property name="length" value="5"/>
+    </bean>
+
+    <!-- 自动填充为byName时 将会根据StudentB中需要填充的的属性的名字去bean中找对应的id名
+         这里 id="pen" 和 StudentB的pen属性名字一致 可以填充  -->
+    <bean id="studentB_2" class="main.java.spring.StudentB" autowire="byName"></bean>
+</beans>

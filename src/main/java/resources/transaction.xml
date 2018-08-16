@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+    <context:annotation-config></context:annotation-config>
+
+    <!--配置jdbc属性-->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:main/java/resources/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--数据源配置,DriverManagerDataSource-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!-- 配置spring jdbctemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!--账户的bean实现类-->
+    <bean id="account_bean" class="main.java.spring.transaction.ado.impl.AccountADOImpl">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--股票的bean实现类-->
+    <bean id="stock_bean" class="main.java.spring.transaction.ado.impl.StockADOImpl">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--业务实现类-->
+    <bean id="buyStockService_bean" class="main.java.spring.transaction.service.serviceimpl.BuyStockServiceImpl"></bean>
+</beans>
